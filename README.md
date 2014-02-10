@@ -19,6 +19,7 @@ Lab2_Bapty
 ## Circuit Schematic
 
 ![alt tag](https://raw2.github.com/seanbapty/Lab2_Bapty/master/1%20bit%20adder%20schematic%20labbokpages.co.uk.jpg)
+![alt tag](https://raw2.github.com/seanbapty/Lab2_Bapty/master/circuitInterface.JPG)
 
 ## Circuit Output
 
