@@ -25,6 +25,7 @@ Lab2_Bapty
 
 ![alt tag](https://raw2.github.com/seanbapty/Lab2_Bapty/master/1%20Bit%20Adder%20Output.JPG)
 
+#Main Lab
 ### Error Log
 None so far.
 
