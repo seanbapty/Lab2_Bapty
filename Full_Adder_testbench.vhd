@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
--- Company: 
--- Engineer:
+-- Company: SCIENCE INC
+-- Engineer: Sean Bapty
 --
 -- Create Date:   16:15:15 02/09/2014
 -- Design Name:   
