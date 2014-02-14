@@ -31,6 +31,12 @@ Lab2_Bapty
 
 ![alt tag](https://raw2.github.com/seanbapty/Lab2_Bapty/master/fourbitadderschematic.JPG)
 
+### Final Output
+![alt tag](https://raw2.github.com/seanbapty/Lab2_Bapty/master/FinalOutput.JPG)
+
+### Design Process
+
+
 ### Error Log
 None so far.
 
