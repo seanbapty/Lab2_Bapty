@@ -34,8 +34,10 @@ entity FourBitAdder is
            B : in  STD_LOGIC_VECTOR (3 downto 0);
 			  Cin : in STD_LOGIC;
 			  negIndicator : in STD_LOGIC;
+			  OverDetect : out STD_LOGIC;
            S : out  STD_LOGIC_VECTOR (3 downto 0);
 			  Cout : out STD_LOGIC);
+			  
 end FourBitAdder;
 
 architecture Structural of FourBitAdder is
@@ -44,13 +46,13 @@ component full_adder is
 	port (A : in STD_LOGIC;
 		B : in STD_LOGIC;
 		Cin : in STD_LOGIC;
-		--negIndicator : in STD_LOGIC;
 		Cout : out STD_LOGIC;
 		S : out STD_LOGIC);
 end component full_adder;
 
 Signal C : std_logic_vector (3 downto 0);
 Signal NewB : std_logic_vector (3 downto 0);
+--Signal OverDetect : STD_LOGIC;
 
 begin
 NewB(0) <= NOT B(0) when negIndicator = '1' else B(0);
@@ -86,4 +88,5 @@ Bit3: component full_adder
 		 Cout => C(3),
 		 S => S(3));
 	Cout<=C(3);
+OverDetect <= C(3) xor C(2); --when negIndicator ='1' else C(3);
 end Structural;
