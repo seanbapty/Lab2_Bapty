@@ -44,5 +44,7 @@ Full funtionality including subtraction and overflow detection was checked and c
 
 When implementing the looping testbench, the assert statement must be followed by a string. This was problematic because the image command only works with scalar types i.e. not std_logic_vector. This was solved by reporting each vector element seperately and & them together.
 
+Initially the overflow detection was too complicated. The original command only checked for overflow detection during subtraction. This did not account for instances such as 7 summed with 1. This was corrected by removing the when statement specifying to check overflow during subtraction.
+
 #### Documentation
 The prelab schematic was taken from labbokpages.co.uk. Additionally, the truth table was verified using a truthtable from njau.edu. The final schematic was taken from izatxamir.com. The looping testbench was modeled after an example from seas.upenn.edu. However, my testbench and this testbench greatly in how they report the specific value at which the error occured because this testbench only accounts for unsigned addition. The logic equation describing the xor relationship for overflow detection was taken from c-jump.com. A brief oral description of the syntax for the when statement used to implement the subtraction was provided my Daniel Eichman.
