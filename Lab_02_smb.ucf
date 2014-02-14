@@ -1,8 +1,4 @@
-#==== Slide Switches ======
-#Net "A" LOC = "K18"; # A input is switch 18 on right side
-#Net "B" LOC = "H18"; # B input is switch 18 on right side
-#Net "C" LOC = "G18"; # C input is switch 18 on right side
-# Changed to "<input 'number'>"
+#==== Inputs ======
 Net B<0> LOC = "G18"; # LSB of B
 Net B<1> LOC = "H18"; # 
 Net B<2> LOC = "K18"; # 
