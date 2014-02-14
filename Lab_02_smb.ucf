@@ -1,0 +1,23 @@
+#==== Slide Switches ======
+#Net "A" LOC = "K18"; # A input is switch 18 on right side
+#Net "B" LOC = "H18"; # B input is switch 18 on right side
+#Net "C" LOC = "G18"; # C input is switch 18 on right side
+# Changed to "<input 'number'>"
+Net B<0> LOC = "G18"; # LSB of B
+Net B<1> LOC = "H18"; # 
+Net B<2> LOC = "K18"; # 
+Net B<3> LOC = "K17"; # MSB of B
+Net A<0> LOC = "L14"; # LSB of A
+Net A<1> LOC = "L13"; # 
+Net A<2> LOC = "N17"; # 
+Net A<3> LOC = "R17"; # MSB of A
+Net NegIndicator LOC = "H13"; #NegIndicator
+#==== LED Outputs =========
+#NET "X" LOC = "K15"; # X led 2
+#NET "Y" LOC = "J15"; # Y led 1
+#NET "Z" LOC = "J14"; # Z led 0
+NET S<0> LOC = "J14"; #corresponds to LED 0
+NET S<1> LOC = "J15";
+NET S<2> LOC = "K15";
+NET S<3> LOC = "K14";
+NET OverDetect LOC = "R4";

@@ -47,6 +47,7 @@ ARCHITECTURE behavior OF FourBit_testbench IS
          B : IN  std_logic_vector(3 downto 0);
 			Cin : IN std_logic;
 			NegIndicator : IN std_logic;
+			OverDetect : out STD_LOGIC;
          S : OUT  std_logic_vector(3 downto 0);
          Cout : OUT  std_logic
         );
@@ -63,6 +64,7 @@ ARCHITECTURE behavior OF FourBit_testbench IS
 	signal count : std_logic_vector(3 downto 0) := "0000";
    signal S : std_logic_vector(3 downto 0);
    signal Cout : std_logic;
+	signal OverDetect : std_logic;
    -- No clocks detected in port list. Replace <clock> below with 
    -- appropriate port name 
  
@@ -76,19 +78,11 @@ BEGIN
           B => B,
 			 Cin => Cin,
 			 NegIndicator => NegIndicator,
+			 OverDetect => OverDetect,
           S => S,
           Cout => Cout
         );
 
-   -- Clock process definitions
---   <clock>_process :process
---   begin
---		<clock> <= '0';
---		wait for <clock>_period/2;
---		<clock> <= '1';
---		wait for <clock>_period/2;
---   end process;
--- 
 
    -- Stimulus process
    stim_proc: process
@@ -97,39 +91,50 @@ BEGIN
 	   A <= ( 3 downto 0 =>'0' );
 		B <= ( 3 downto 0 =>'0' );
 		Cin <= '0';
-		NegIndicator <= '1';
+		NegIndicator <= '0';
 		--wait for 100 ns;
 		
 		for I in 0 to 15 loop
 			for J in 0 to 15 loop
 				wait for 10 ns;
---				assert (S = A + B) report "Expected sum of " &
---					integer'image(to_integer(unsigned((A+B)))) & " for A = " &
---					integer'image(to_integer(unsigned((A)))) & " and B = " &
---					integer'image(to_integer(unsigned((B)))) & ", but was " &
---					integer'image(to_integer(unsigned((S)))) severity ERROR;
+				assert (S = A + B) report "A = " & 
+				std_logic'image(A(3)) &
+				std_logic'image(A(2)) &
+				std_logic'image(A(1)) &
+				std_logic'image(A(0)) &
+				"B = " &
+				std_logic'image(B(3)) &
+				std_logic'image(B(2)) &
+				std_logic'image(B(1)) &
+				std_logic'image(B(0))
+				severity ERROR;
+				assert (S /= A + B) report "test success" severity NOTE;
 				B <= B + "0001";
 			end loop;
 			A <= A + "0001";
 		end loop;
 		wait for 10 ns;
---      -- hold reset state for 100 ns.
---      wait for 100 ns;	
-
---			for I in 0 to 15 loop
---				wait for 100 ns;
---					REPORT "For A = "  
---						& count
---						& " B = "
---						& std_logic'image(count(2))
---						--& " Cin = "
---						--& std_logic'image(count(1))
---						--& " S = "
---						--& std_logic'image(count(0))
---				SEVERITY NOTE;
---				count <= count + 1;
---		end loop;
-      wait;
+		Negindicator <= '1';
+		for I in 0 to 15 loop
+			for J in 0 to 15 loop
+				wait for 10 ns;
+				assert (S = A - B) report "A = " &
+				std_logic'image(A(3)) &
+				std_logic'image(A(2)) &
+				std_logic'image(A(1)) &
+				std_logic'image(A(0)) &
+				"B = " &
+				std_logic'image(B(3)) &
+				std_logic'image(B(2)) &
+				std_logic'image(B(1)) &
+				std_logic'image(B(0))
+				severity ERROR;
+				assert (S /= A - B) report "test success" severity NOTE;
+				B <= B + "0001";
+			end loop;
+			A <= A + "0001";
+		end loop;      
+		wait;
    end process;
 
 END;
